@@ -453,7 +453,7 @@
                 <version>${maven_compiler_version}</version>
                 <configuration>
                     <compilerArgument>-proc:none</compilerArgument>
-                    <fork>true</fork>
+                    <fork>false</fork>
                     <source>${java_source_version}</source>
                     <target>${java_target_version}</target>
                     <encoding>${file_encoding}</encoding>
