@@ -191,14 +191,17 @@ public abstract class AbstractConfig implements Serializable {
                         continue;
                     }
                     int i = name.startsWith("get") ? 3 : 2;
+                    //驼峰转分割,userFirstName => user.first.name
                     String prop = StringUtils.camelToSplitName(name.substring(i, i + 1).toLowerCase() + name.substring(i + 1), ".");
                     String key;
+                    //key = 注解的key或者方法的属性名
                     if (parameter != null && parameter.key().length() > 0) {
                         key = parameter.key();
                     } else {
                         key = prop;
                     }
                     Object value = method.invoke(config);
+                    //返回类型是基础类型,转成string
                     String str = String.valueOf(value).trim();
                     if (value != null && str.length() > 0) {
                         if (parameter != null && parameter.escaped()) {
